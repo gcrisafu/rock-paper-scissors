@@ -6,21 +6,16 @@ function computerChoice(){
         {return "rock"}
     else if (computer > 1/3 && computer < 2/3 )
         {return "paper"}
-    else (computer > 2/3)
+    else 
         {return "scissors"}
     }
 
-let compChoice = computerChoice();
-
 // get user input and converts to lower case
 
-let userChoice = prompt();
 
 function convertUserInput (userChoice){
     return userChoice.toLowerCase()
 }
-
-let convertedUserChoice = convertUserInput(userChoice)
 
 // round function, compares convertedUserChoice and compChoice
 
@@ -66,9 +61,39 @@ function round (convertedUserChoice,compChoice){
         return null 
      } 
 }
+// Match Function 
+function match(){
+    let roundCounter = 0;
+    let userScore = 0;
+    let compScore = 0;
+    while (roundCounter < 5){
+        let userChoice = prompt("Rock, paper, or scissors?");
+        let convertedUserChoice = convertUserInput(userChoice);
+        let compChoice = computerChoice();
+        let game = round(convertedUserChoice, compChoice);
+        
+        if (game === true) {
+            userScore++;
+        } else if (game === false){
+            compScore++;
+        }
+        roundCounter++;
+        }
+           
+        // chat gpt helped with these last two
+        
+        console.log("Final Score - You:", userScore, "Computer:", compScore);
+    if (userScore > compScore) {
+        console.log("🎉 You won the match!");
+    } else if (compScore > userScore) {
+        console.log("😢 You lost the match...");
+    } else {
+        console.log("🤝 It’s a draw overall!");
+    } // ─── end final result if ───
+    }
 
-let game = round(convertedUserChoice,compChoice)
 
+match();
 
 
 
