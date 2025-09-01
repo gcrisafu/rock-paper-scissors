@@ -1,5 +1,5 @@
 console.log("Hello World")
-
+// gets computer's choice
 function computerChoice(){
     let computer = Math.random();
     if (computer < 1/3)
@@ -10,8 +10,18 @@ function computerChoice(){
         {return "Scissors"}
     }
 
-let compChoice = computerChoice()
-console.log(compChoice)
+let compChoice = computerChoice();
+
+let userChoice = prompt();
+
+function convertUserInput (userChoice){
+    return userChoice.toLowerCase()
+}
+
+let convertedUserChoice = convertUserInput(userChoice)
+console.log(convertedUserChoice)
+
+
 
 
 
