@@ -62,8 +62,8 @@ function match(roundOutcome) {
     
     roundCounter++;
     roundCount.textContent = `Round: ${roundCounter}`;
-    cpuTally.textContent = `Computer Score ${compScore}`;
-    userTally.textContent = `User Score ${userScore}`;
+    cpuTally.textContent = `CPU Score: ${compScore}`;
+    userTally.textContent = `USER Score: ${userScore}`;
     
 
 }
@@ -157,7 +157,7 @@ function endGame(message) {
 
 
 const newDiv = document.createElement("div");
-
+newDiv.id = "newDiv"
 const cpuTally = document.createElement("h1");
 cpuTally.id = "cpuTally"
 
@@ -167,8 +167,5 @@ userTally.id = "userTally"
 newDiv.appendChild(cpuTally);
 newDiv.appendChild(userTally);
 document.body.appendChild(newDiv)
-
-
-
 
 
