@@ -1,3 +1,45 @@
+body{
+    background-color:rgb(255, 162, 86);
+}
 .pics {
     width:20vw;
+    transition: .1s;
+    mix-blend-mode:overlay;
+}
+
+.pics:hover{
+    filter: drop-shadow(5px 5px 50px rgb(0, 225, 255));
+}
+
+#container {
+    display:flex;
+    justify-content:center;
+
+}
+
+#res {
+    display:flex;
+    justify-content:center;
+    gap: 50px;
+}
+
+#gameResult {
+    display:flex;
+    gap: 50px;
+    font-size:3vw;
+    color:rgb(162, 0, 255)
+
+
+}
+
+#cpuChoice {
+     font-size:1.5vw;
+     font-family:Arial, Helvetica, sans-serif;
+    color:white;
+}
+
+#roundCount{
+     font-size:2vw;
+     font-family:Arial, Helvetica, sans-serif;
+    color:white;
 }

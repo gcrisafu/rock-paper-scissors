@@ -23,19 +23,23 @@ const result = document.createElement("div");
 result.id = "res";
 
 const child = document.createElement("h1");
-
+child.id = "gameResult"
 
 const comChoice = document.createElement("h2");
-
+comChoice.id = "cpuChoice"
 result.appendChild(comChoice)
 result.appendChild(child)
 document.body.appendChild(result);
+result.style.justifyContent = "space-between";
+result.style.margin = "0px 100px";
+
 
     let roundCounter = 0;
     let userScore = 0;
     let compScore = 0
 
 const roundCount = document.createElement("h1");
+roundCount.id = "roundCount"
 roundCount.textContent = roundCounter;
 result.appendChild(roundCount);
 
@@ -44,10 +48,10 @@ result.appendChild(roundCount);
 function match(roundOutcome) {
     if (userScore === 5) {
         endGame("🎉 You win the match! Congratulations! 🎉");
-        return; // ✅ stop here
+        return; 
     } else if (compScore === 5) {
         endGame("😝 You Lose, Better luck next time. 😝");
-        return; // ✅ stop here
+        return; 
     }
 
     if (roundOutcome === true) {
@@ -58,54 +62,58 @@ function match(roundOutcome) {
     
     roundCounter++;
     roundCount.textContent = `Round: ${roundCounter}`;
+    cpuTally.textContent = `Computer Score ${compScore}`;
+    userTally.textContent = `User Score ${userScore}`;
+    
+
 }
 
 function round (convertedUserChoice,compChoice){
     // User throws rock
     if ((convertedUserChoice === "rock") && (compChoice == "scissors")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("You win! Rock beats scissors")
         return true;
         
     } else if ((convertedUserChoice === "rock") && (compChoice === "paper")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("You lose... Paper beats rock")
         return false
         
     } else if ((convertedUserChoice === "rock") && (compChoice === "rock")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("Dang-it it's a Draw")
         return null
         
     // User throw paper
     } else if ((convertedUserChoice === "paper") && (compChoice === "rock")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("You win! Paper beats rock")
         return true
         
     } else if ((convertedUserChoice === "paper") && (compChoice === "scissors")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("You lose... Scissors beats paper")
         return false
          
      } else if ((convertedUserChoice === "paper") && (compChoice === "paper")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("Dang-it it's a Draw")
         return null
 
     // User throws scissors 
     } else if ((convertedUserChoice === "scissors") && (compChoice === "paper")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("You win! Scissors beats paper")
         return true
         
     } else if ((convertedUserChoice === "scissors") && (compChoice === "rock")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("You lose... Rock beats scissors")
         return false
          
      } else if ((convertedUserChoice === "scissors") && (compChoice === "scissors")){
-        comChoice.textContent = (compChoice)
+        comChoice.textContent = (`CPU: ${compChoice}`)
         child.textContent = ("Dang-it it's a Draw")
         return null
          
@@ -142,10 +150,23 @@ document.getElementById("container").appendChild(scissors);
 
 function endGame(message) {
     child.textContent = message;
-    rock.disabled = true;
-    paper.disabled = true;
-    scissors.disabled = true;
+    rock.style.pointerEvents = "none";
+    paper.style.pointerEvents = "none";
+    scissors.style.pointerEvents = "none";
 }
+
+
+const newDiv = document.createElement("div");
+
+const cpuTally = document.createElement("h1");
+cpuTally.id = "cpuTally"
+
+const userTally = document.createElement("h1");
+userTally.id = "userTally"
+
+newDiv.appendChild(cpuTally);
+newDiv.appendChild(userTally);
+document.body.appendChild(newDiv)
 
 
 
