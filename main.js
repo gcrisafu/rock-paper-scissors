@@ -23,7 +23,6 @@ const result = document.createElement("div");
 result.id = "res";
 
 const child = document.createElement("h1");
-const roundCount = document.createElement ("h1")
 
 
 const comChoice = document.createElement("h2");
@@ -36,21 +35,29 @@ document.body.appendChild(result);
     let userScore = 0;
     let compScore = 0
 
+const roundCount = document.createElement("h1");
+roundCount.textContent = roundCounter;
+result.appendChild(roundCount);
+
+
 // round function, compares convertedUserChoice and compChoice
-function match (roundOutcome){
-    if (userScore === 5){
-        child.textContent = ("🎉 You win the match! Congratulations! 🎉")
-    } else if (compScore === 5){
-        child.textContent ("😝 You Lose, Better luck next time. 😝")
-    } else if (roundOutcome === true){
-        userScore++;
-        roundCounter++;
-    } else if (roundOutcome === false){
-        compScore++;
-        roundCounter++;
-    } else if (roundOutcome === null){
-        roundCounter++;
+function match(roundOutcome) {
+    if (userScore === 5) {
+        endGame("🎉 You win the match! Congratulations! 🎉");
+        return; // ✅ stop here
+    } else if (compScore === 5) {
+        endGame("😝 You Lose, Better luck next time. 😝");
+        return; // ✅ stop here
     }
+
+    if (roundOutcome === true) {
+        userScore++;
+    } else if (roundOutcome === false) {
+        compScore++;
+    }
+    
+    roundCounter++;
+    roundCount.textContent = `Round: ${roundCounter}`;
 }
 
 function round (convertedUserChoice,compChoice){
@@ -111,7 +118,7 @@ function round (convertedUserChoice,compChoice){
 const rock = document.createElement("button");
 rock.textContent = "Rock";
 rock.addEventListener("click", function() {
-    const result = round ("rock", computerChoice())
+    const result = round("rock", computerChoice())
     match(result);
 })
 document.getElementById("container").appendChild(rock);
@@ -119,7 +126,7 @@ document.getElementById("container").appendChild(rock);
 const paper = document.createElement("button");
 paper.textContent = "Paper";
 paper.addEventListener("click", function() {
-    const result = round ("paper", computerChoice())
+    const result = round("paper", computerChoice())
     match(result);
 })
 document.getElementById("container").appendChild(paper);
@@ -127,12 +134,18 @@ document.getElementById("container").appendChild(paper);
 const scissors = document.createElement("button");
 scissors.textContent = "Scissors";
 scissors.addEventListener("click", function() {
-    const result = round ("scissors", computerChoice())
+    const result = round("scissors", computerChoice())
     match(result);
 })
 document.getElementById("container").appendChild(scissors);
 
-// match function
+
+function endGame(message) {
+    child.textContent = message;
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+}
 
 
 
