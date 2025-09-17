@@ -115,7 +115,7 @@ function round (convertedUserChoice,compChoice){
 
 // displaying ui elements to the dom
 
-const rock = document.createElement("button");
+const rock = document.getElementById("rockPic");
 rock.textContent = "Rock";
 rock.addEventListener("click", function() {
     const result = round("rock", computerChoice())
@@ -123,7 +123,7 @@ rock.addEventListener("click", function() {
 })
 document.getElementById("container").appendChild(rock);
 
-const paper = document.createElement("button");
+const paper = document.getElementById("paperPic");
 paper.textContent = "Paper";
 paper.addEventListener("click", function() {
     const result = round("paper", computerChoice())
@@ -131,7 +131,7 @@ paper.addEventListener("click", function() {
 })
 document.getElementById("container").appendChild(paper);
 
-const scissors = document.createElement("button");
+const scissors = document.getElementById("scissorsPic");
 scissors.textContent = "Scissors";
 scissors.addEventListener("click", function() {
     const result = round("scissors", computerChoice())
